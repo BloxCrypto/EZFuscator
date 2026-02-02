@@ -187,7 +187,7 @@ export default function Obfuscator() {
         <div className="md:hidden h-px bg-border w-full"></div>
 
         {/* Right Panel - Output */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden min-h-[50vh] md:min-h-auto">
           {/* Editor Header */}
           <div className="px-4 py-3 bg-[#252525] border-b border-border text-sm text-muted-foreground flex justify-between items-center">
             <span className="font-semibold">Obfuscated</span>
