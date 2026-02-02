@@ -166,8 +166,7 @@ export default function Obfuscator() {
                 </>
               ) : (
                 <>
-                  <span className="hidden sm:inline">Obfuscate</span>
-                  <span className="sm:hidden">Run</span>
+                  Obfuscate
                 </>
               )}
             </button>
