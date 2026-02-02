@@ -132,12 +132,4 @@
   .animate-pulse-slow {
     animation: pulse 1.5s ease-in-out infinite;
   }
-
-  .font-mono {
-    @apply font-mono;
-  }
-
-  .code-editor {
-    @apply font-mono text-sm leading-relaxed;
-  }
 }
