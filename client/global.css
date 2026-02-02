@@ -118,3 +118,26 @@
     white-space: pre;
   }
 }
+
+@layer utilities {
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .font-mono {
+    @apply font-mono;
+  }
+
+  .code-editor {
+    @apply font-mono text-sm leading-relaxed;
+  }
+}
