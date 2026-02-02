@@ -199,7 +199,7 @@ export default function Obfuscator() {
             value={inputCode}
             onChange={(e) => setInputCode(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="-- Paste your Lua code here..."
+            placeholder="-- Paste your FUCKING Lua code here..."
             className="flex-1 bg-background text-foreground font-mono text-sm p-4 resize-none outline-none border-none overflow-auto"
           />
         </div>
