@@ -119,7 +119,7 @@ export default function Obfuscator() {
       </div>
 
       {/* Main Container */}
-      <div className="flex flex-1 overflow-hidden gap-0">
+      <div className="flex flex-1 overflow-hidden gap-0 flex-col md:flex-row">
         {/* Left Panel - Input */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Button Row */}
