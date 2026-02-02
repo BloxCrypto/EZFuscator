@@ -40,13 +40,43 @@ export default function Obfuscator() {
       alert("No obfuscated code to copy");
       return;
     }
-    navigator.clipboard.writeText(outputCode).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }).catch((err) => {
+
+    // Try modern Clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(outputCode).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }).catch(() => {
+        // Fallback to older method
+        fallbackCopy();
+      });
+    } else {
+      // Fallback for older browsers or restricted environments
+      fallbackCopy();
+    }
+  };
+
+  const fallbackCopy = () => {
+    try {
+      const textArea = document.createElement("textarea");
+      textArea.value = outputCode;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+      const successful = document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      if (successful) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        alert("Failed to copy to clipboard. Please try again.");
+      }
+    } catch (err) {
       console.error("Copy failed:", err);
       alert("Failed to copy to clipboard. Please try again.");
-    });
+    }
   };
 
   const handleDownload = () => {
