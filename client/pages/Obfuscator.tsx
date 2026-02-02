@@ -37,7 +37,7 @@ export default function Obfuscator() {
 
   const handleCopyOutput = () => {
     if (!outputCode) {
-      alert("No obfuscated code to copy");
+      alert("There are no Obfuscated code to copy bro");
       return;
     }
 
