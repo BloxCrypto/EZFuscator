@@ -108,16 +108,6 @@ export default function Obfuscator() {
 
   return (
     <div className="flex flex-col h-screen bg-background text-foreground">
-      {/* Header */}
-      <div className="h-14 bg-[#121212] border-b border-border flex items-center justify-between px-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-            Ⓛ
-          </div>
-          <h1 className="text-lg font-bold">Lua Obfuscator</h1>
-        </div>
-      </div>
-
       {/* Main Container */}
       <div className="flex flex-1 overflow-hidden gap-0 flex-col md:flex-row">
         {/* Left Panel - Input */}
