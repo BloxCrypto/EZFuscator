@@ -90,7 +90,7 @@ export default function Obfuscator() {
       "href",
       "data:text/plain;charset=utf-8," + encodeURIComponent(outputCode)
     );
-    element.setAttribute("download as lua", "obfuscated.lua");
+    element.setAttribute("download", "obfuscated.lua");
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();
@@ -219,7 +219,7 @@ export default function Obfuscator() {
                 className="text-primary hover:text-blue-500 transition-colors text-xs font-medium flex items-center gap-1"
               >
                 <Download size={14} />
-                <span>{downloaded ? "Downloaded!" : "Download"}</span>
+                <span>{downloaded ? "Downloaded!" : "Download as lua"}</span>
               </button>
             )}
           </div>
