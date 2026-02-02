@@ -183,7 +183,8 @@ export default function Obfuscator() {
         </div>
 
         {/* Divider */}
-        <div className="w-px bg-border"></div>
+        <div className="hidden md:block w-px bg-border"></div>
+        <div className="md:hidden h-px bg-border w-full"></div>
 
         {/* Right Panel - Output */}
         <div className="flex-1 flex flex-col overflow-hidden">
