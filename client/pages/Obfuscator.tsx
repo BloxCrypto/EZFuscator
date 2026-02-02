@@ -121,7 +121,7 @@ export default function Obfuscator() {
       {/* Main Container */}
       <div className="flex flex-1 overflow-hidden gap-0 flex-col md:flex-row">
         {/* Left Panel - Input */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden min-h-[50vh] md:min-h-auto">
           {/* Button Row */}
           <div className="flex gap-2 p-3 bg-[#252525] border-b border-border flex-wrap">
             <button
