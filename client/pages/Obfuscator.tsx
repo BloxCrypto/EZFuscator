@@ -234,7 +234,7 @@ export default function Obfuscator() {
               </div>
             ) : (
               <div className="text-center text-muted-foreground py-8">
-                Output will appear here...
+                Your FUCKING code will appear here...
               </div>
             )}
 
