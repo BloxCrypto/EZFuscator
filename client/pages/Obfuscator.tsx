@@ -206,27 +206,6 @@ export default function Obfuscator() {
               </div>
             )}
 
-            {/* Stats */}
-            {stats.original > 0 && (
-              <div className="grid grid-cols-2 gap-3 mt-4">
-                <div className="bg-[#252525] border border-border rounded p-3">
-                  <div className="text-xs text-muted-foreground mb-1">
-                    Original Size
-                  </div>
-                  <div className="text-sm font-semibold text-primary">
-                    {formatBytes(stats.original)}
-                  </div>
-                </div>
-                <div className="bg-[#252525] border border-border rounded p-3">
-                  <div className="text-xs text-muted-foreground mb-1">
-                    Obfuscated Size
-                  </div>
-                  <div className="text-sm font-semibold text-primary">
-                    {formatBytes(stats.obfuscated)}
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
