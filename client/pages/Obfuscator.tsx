@@ -43,6 +43,9 @@ export default function Obfuscator() {
     navigator.clipboard.writeText(outputCode).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    }).catch((err) => {
+      console.error("Copy failed:", err);
+      alert("Failed to copy to clipboard. Please try again.");
     });
   };
 
