@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Copy, Download, Trash2 } from "lucide-react";
 import { obfuscateLua, formatBytes } from "@/lib/obfuscate";
+import MonacoEditor from "@/components/MonacoEditor";
 
 export default function Obfuscator() {
   const [inputCode, setInputCode] = useState('print("Hello World!")');
