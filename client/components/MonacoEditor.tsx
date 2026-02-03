@@ -36,6 +36,11 @@ export default function MonacoEditorComponent({
         automaticLayout: true,
       }}
       className={className}
+      loading={
+        <div className="flex items-center justify-center h-full bg-[#1a1a1a]">
+          <div className="text-muted-foreground">Loading editor...</div>
+        </div>
+      }
     />
   );
 }
