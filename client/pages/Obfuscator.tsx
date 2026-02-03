@@ -226,15 +226,17 @@ export default function Obfuscator() {
           </div>
 
           {/* Output Content */}
-          <div className="flex-1 overflow-auto p-4">
+          <div className="flex-1 overflow-hidden flex flex-col">
             {outputCode ? (
-              <div className="relative">
-                <pre className="bg-[#252525] border border-border rounded p-3 font-mono text-sm text-primary overflow-x-auto break-all whitespace-pre-wrap word-break-break-word">
-                  {outputCode}
-                </pre>
-              </div>
+              <MonacoEditor
+                value={outputCode}
+                onChange={() => {}} // Read-only, so no-op
+                language="lua"
+                readOnly={true}
+                className="flex-1"
+              />
             ) : (
-              <div className="text-center text-muted-foreground py-8">
+              <div className="flex-1 flex items-center justify-center text-muted-foreground">
                 Output will appear here...
               </div>
             )}
