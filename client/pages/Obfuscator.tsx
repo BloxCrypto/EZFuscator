@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Copy, Download, Trash2 } from "lucide-react";
 import { obfuscateLua, formatBytes } from "@/lib/obfuscate";
 import MonacoEditor from "@/components/MonacoEditor";
