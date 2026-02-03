@@ -43,17 +43,12 @@ export const obfuscateLua = (code: string): ObfuscationResult => {
     "(2 + 2 == 4)",
   ];
   const selectedPredicate =
-    opaquePredicates[
-      Math.floor(Math.random() * opaquePredicates.length)
-    ];
+    opaquePredicates[Math.floor(Math.random() * opaquePredicates.length)];
 
   // Build concatenation of byte chunks
   const chunkVars = byteChunks.map((_, i) => `${aliasData}${i}`);
   const chunkAssignments = byteChunks
-    .map(
-      (chunk, i) =>
-        `local ${aliasData}${i} = ${aliasChar}(${chunk})`
-    )
+    .map((chunk, i) => `local ${aliasData}${i} = ${aliasChar}(${chunk})`)
     .join("; ");
   const concatExpression = chunkVars.join(" .. ");
 
@@ -88,9 +83,5 @@ export const formatBytes = (bytes: number): string => {
   const k = 1024;
   const sizes = ["B", "KB", "MB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return (
-    Math.round((bytes / Math.pow(k, i)) * 100) / 100 +
-    " " +
-    sizes[i]
-  );
+  return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
 };
