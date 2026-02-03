@@ -4,11 +4,13 @@ export interface ObfuscationResult {
   obfuscatedSize: number;
 }
 
-const toByteString = (str: string): string => {
-  return str
-    .split("")
-    .map((char) => char.charCodeAt(0))
-    .join(", ");
+const toByteString = (str: string, chunkSize: number = 120): string[] => {
+  const bytes = str.split("").map((char) => char.charCodeAt(0));
+  const chunks = [];
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    chunks.push(bytes.slice(i, i + chunkSize).join(", "));
+  }
+  return chunks;
 };
 
 const randomVarName = (length: number): string => {
@@ -24,7 +26,7 @@ const randomVarName = (length: number): string => {
 };
 
 export const obfuscateLua = (code: string): ObfuscationResult => {
-  const bytes = toByteString(code);
+  const byteChunks = toByteString(code);
 
   const aliasChar = randomVarName(8);
   const aliasLoad = randomVarName(8);
@@ -32,6 +34,7 @@ export const obfuscateLua = (code: string): ObfuscationResult => {
   const aliasFunc = randomVarName(9);
   const aliasParam = randomVarName(5);
   const junkVar = randomVarName(6);
+  const aliasCat = randomVarName(7);
 
   const opaquePredicates = [
     "(math.pi > 3)",
@@ -44,10 +47,21 @@ export const obfuscateLua = (code: string): ObfuscationResult => {
       Math.floor(Math.random() * opaquePredicates.length)
     ];
 
-  const encoded = `local ${aliasChar}, ${aliasLoad} = string.char, (loadstring or load);
+  // Build concatenation of byte chunks
+  const chunkVars = byteChunks.map((_, i) => `${aliasData}${i}`);
+  const chunkAssignments = byteChunks
+    .map(
+      (chunk, i) =>
+        `local ${aliasData}${i} = ${aliasChar}(${chunk})`
+    )
+    .join("; ");
+  const concatExpression = chunkVars.join(" .. ");
+
+  const encoded = `local ${aliasChar}, ${aliasLoad}, ${aliasCat} = string.char, (loadstring or load), table.concat;
 local ${junkVar} = function(...) return ... end;
 if ${selectedPredicate} then
-    local ${aliasData} = ${aliasChar}(${bytes});
+    ${chunkAssignments};
+    local ${aliasData} = ${concatExpression};
     local ${aliasFunc} = function(${aliasParam})
         if ${junkVar}(true) then
             return ${aliasLoad}(${aliasParam})()
