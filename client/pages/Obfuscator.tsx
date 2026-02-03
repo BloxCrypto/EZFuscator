@@ -13,7 +13,7 @@ export default function Obfuscator() {
 
   const handleObfuscate = () => {
     if (!inputCode.trim()) {
-      alert("Please enter some Lua code to obfuscate");
+      alert("Dude enter your Lua code bro");
       return;
     }
 
@@ -37,7 +37,7 @@ export default function Obfuscator() {
 
   const handleCopyOutput = () => {
     if (!outputCode) {
-      alert("No obfuscated code to copy");
+      alert("There are no Obfuscated code to copy bro");
       return;
     }
 
@@ -71,17 +71,17 @@ export default function Obfuscator() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } else {
-        alert("Failed to copy to clipboard. Please try again.");
+        alert("Copy failed ig");
       }
     } catch (err) {
       console.error("Copy failed:", err);
-      alert("Failed to copy to clipboard. Please try again.");
+      alert("Copy failed ig");
     }
   };
 
   const handleDownload = () => {
     if (!outputCode) {
-      alert("No obfuscated code to download");
+      alert("There are no Obfuscated code to download bro");
       return;
     }
 
@@ -162,7 +162,7 @@ export default function Obfuscator() {
               {isProcessing ? (
                 <>
                   <span className="w-1 h-1 bg-current rounded-full animate-pulse-slow"></span>
-                  <span className="hidden sm:inline">Processing...</span>
+                  <span className="hidden sm:inline">...</span>
                 </>
               ) : (
                 <>
@@ -181,9 +181,9 @@ export default function Obfuscator() {
 
           {/* Editor Header */}
           <div className="px-4 py-3 bg-[#252525] border-b border-border text-sm text-muted-foreground flex justify-between items-center">
-            <span className="font-semibold">Input Code</span>
+            <span className="font-semibold">Code Editor</span>
             <label className="cursor-pointer text-primary hover:text-blue-500 transition-colors text-xs font-medium flex items-center gap-1">
-              <span>Upload</span>
+              <span>Upload file</span>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -199,7 +199,7 @@ export default function Obfuscator() {
             value={inputCode}
             onChange={(e) => setInputCode(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="-- Paste your Lua code here..."
+            placeholder="-- Paste your FUCKING Lua code here..."
             className="flex-1 bg-background text-foreground font-mono text-sm p-4 resize-none outline-none border-none overflow-auto"
           />
         </div>
@@ -219,7 +219,7 @@ export default function Obfuscator() {
                 className="text-primary hover:text-blue-500 transition-colors text-xs font-medium flex items-center gap-1"
               >
                 <Download size={14} />
-                <span>{downloaded ? "Downloaded!" : "Download"}</span>
+                <span>{downloaded ? "Downloaded!" : "Download as lua"}</span>
               </button>
             )}
           </div>
@@ -234,7 +234,7 @@ export default function Obfuscator() {
               </div>
             ) : (
               <div className="text-center text-muted-foreground py-8">
-                Output will appear here...
+                Your FUCKING code will appear here...
               </div>
             )}
 
