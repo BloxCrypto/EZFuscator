@@ -111,7 +111,7 @@ export default function Obfuscator() {
     if (!file) return;
 
     if (file.size > 1024 * 1024) {
-      alert("File size exceeds 1MB limit");
+      alert("Your file is to big bro only 1MB allowed");
       return;
     }
 
