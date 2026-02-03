@@ -122,13 +122,13 @@ export default function Obfuscator() {
         setInputCode(content);
       } catch (error) {
         alert(
-          "Failed to read file: " +
+          "failed to read them lol: " +
             (error instanceof Error ? error.message : "Unknown error"),
         );
       }
     };
     reader.onerror = () => {
-      alert("Failed to read file");
+      alert("failed to read them lol");
     };
     reader.readAsText(file);
   };
