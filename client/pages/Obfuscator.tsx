@@ -28,7 +28,10 @@ export default function Obfuscator() {
         });
       } catch (error) {
         console.error(error);
-        alert("Error: " + (error instanceof Error ? error.message : "Unknown error"));
+        alert(
+          "Error: " +
+            (error instanceof Error ? error.message : "Unknown error"),
+        );
       } finally {
         setIsProcessing(false);
       }
@@ -43,13 +46,16 @@ export default function Obfuscator() {
 
     // Try modern Clipboard API first
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(outputCode).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }).catch(() => {
-        // Fallback to older method
-        fallbackCopy();
-      });
+      navigator.clipboard
+        .writeText(outputCode)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch(() => {
+          // Fallback to older method
+          fallbackCopy();
+        });
     } else {
       // Fallback for older browsers or restricted environments
       fallbackCopy();
@@ -88,7 +94,7 @@ export default function Obfuscator() {
     const element = document.createElement("a");
     element.setAttribute(
       "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(outputCode)
+      "data:text/plain;charset=utf-8," + encodeURIComponent(outputCode),
     );
     element.setAttribute("download", "obfuscated.lua");
     element.style.display = "none";
@@ -115,7 +121,10 @@ export default function Obfuscator() {
         const content = e.target?.result as string;
         setInputCode(content);
       } catch (error) {
-        alert("Failed to read file: " + (error instanceof Error ? error.message : "Unknown error"));
+        alert(
+          "Failed to read file: " +
+            (error instanceof Error ? error.message : "Unknown error"),
+        );
       }
     };
     reader.onerror = () => {
@@ -165,9 +174,7 @@ export default function Obfuscator() {
                   <span className="hidden sm:inline">...</span>
                 </>
               ) : (
-                <>
-                  Obfuscate
-                </>
+                <>Obfuscate</>
               )}
             </button>
             <button
@@ -175,7 +182,9 @@ export default function Obfuscator() {
               className="flex-1 min-w-24 px-3 py-2 bg-card border border-border text-foreground rounded hover:bg-[#333] transition-colors text-sm font-medium flex items-center justify-center gap-2"
             >
               <Copy size={16} />
-              <span className="hidden sm:inline">{copied ? "Copied!" : "Copy"}</span>
+              <span className="hidden sm:inline">
+                {copied ? "Copied!" : "Copy"}
+              </span>
             </button>
           </div>
 
@@ -237,7 +246,6 @@ export default function Obfuscator() {
                 Your FUCKING code will appear here...
               </div>
             )}
-
           </div>
         </div>
       </div>
