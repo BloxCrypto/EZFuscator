@@ -196,12 +196,12 @@ export default function Obfuscator() {
           </div>
 
           {/* Code Editor */}
-          <MonacoEditor
+          <textarea
             value={inputCode}
-            onChange={setInputCode}
-            language="lua"
-            readOnly={false}
-            className="flex-1"
+            onChange={(e) => setInputCode(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="-- Paste your Lua code here..."
+            className="flex-1 bg-background text-foreground font-mono text-sm p-4 resize-none outline-none border-none overflow-auto"
           />
         </div>
 
